@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { auth } from "./config/firebase";
 import routes from "./config/routes";
 import Center from "./components/utils/Center";
 import AuthChecker from "./components/auth/AuthChecker";
+import UserManagement from "./firebase/UserManagement";
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,7 +31,8 @@ function App() {
 
   return (
     <div>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <UserManagement>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           {routes.map((route, index) => (
             <Route
@@ -48,6 +51,7 @@ function App() {
           ))}
         </Routes>
       </BrowserRouter>
+      </UserManagement>
     </div>
   );
 }
