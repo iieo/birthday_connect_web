@@ -11,21 +11,20 @@ interface Props {
 const Logout = ({ navigateTo = "/login" }: Props) => {
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
-  const logout = () => {
+  const logout = async () => {
     setDisabled(true);
-    signOut(auth)
-      .then(() => {
-        navigate(navigateTo);
-      })
-      .catch((error) => {
+    try {
+      await signOut(auth);
+      navigate(navigateTo);
+    }catch(error){
         console.error(error);
         setDisabled(false);
-      });
+    }
   };
 
   return (
     <div>
-      <Button disabled={disabled} onClick={logout}>
+      <Button color="inherit" disabled={disabled} onClick={logout}>
         Logout
       </Button>
     </div>

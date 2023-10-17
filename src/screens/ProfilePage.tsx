@@ -1,7 +1,7 @@
 
 import React, { useContext, useState } from "react";
 import Center from "../components/utils/Center";
-import { Avatar, Button, Divider, TextField } from "@mui/material";
+import { Avatar, Box, Button, Divider, TextField } from "@mui/material";
 import { DateField, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
@@ -34,35 +34,33 @@ const ProfilePage = ({}: Props) => {
 
     return (
       <Center>
-        <Avatar
-          sx={{ width: 100, height: 100 }}
-          alt="Remy Sharp"
-          src="https://avatars.githubusercontent.com/u/20165699?v=4"
-        />
-        <Divider sx={{ my: 2 }} />
-        <TextField
-          label="Name"
-          variant="outlined"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateField
-            sx={{ mt: 2 }}
-            label="Your Birthday"
-            value={birthday}
-            onChange={(newValue) => setBirthday(newValue)}
-            format="LL"
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Avatar sx={{ width: 200, height: 200 }} />
+          <Divider sx={{ my: 2 }} />
+          <TextField
+            label="Name"
+            variant="outlined"
+            value={name}
+            onChange={handleNameChange}
           />
-        </LocalizationProvider>
-        <Button
-          sx={{ mt: 2 }}
-          size="large"
-          variant="contained"
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateField
+              sx={{ mt: 2 }}
+              label="Your Birthday"
+              value={birthday}
+              onChange={(newValue) => setBirthday(newValue)}
+              format="LL"
+            />
+          </LocalizationProvider>
+          <Button
+            sx={{ mt: 2, width: "100%" }}
+            size="large"
+            variant="contained"
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        </Box>
       </Center>
     );
 };

@@ -21,6 +21,7 @@ export default function UserManagement({ children }: UserManagementProps) {
               await user.saveProfile();
             }
             if (user !== undefined) {
+              await user.fetchFriends();
               setUser(user);
             } else {
                 console.error("Error fetching user profile.");

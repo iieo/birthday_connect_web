@@ -10,6 +10,7 @@
   import { Button, TextField, Typography } from "@mui/material";
   import GoogleIcon from "@mui/icons-material/Google";
   import Center from "../utils/Center";
+import { Email } from "@mui/icons-material";
 
   interface Props {
     action: string;
@@ -101,24 +102,26 @@
           />
         )}
         <Button
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, width: "100%" }}
           size="large"
+          startIcon={<Email />}
           disabled={disabled}
           variant="contained"
           onClick={props.action === "login" ? signInWithEmail : signUpWithEmail}
         >
-          {props.action === "login" ? "Sign In With Email" : "Sign Up With Email"}
+          {(props.action === "login" ? "Sign in" : "Sign up") + " with Email"}
         </Button>
         <Button
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, width: "100%" }}
           startIcon={<GoogleIcon />}
           size="large"
           disabled={disabled}
           variant="contained"
           onClick={signInWithGoogle}
         >
-          Sign In With Google
+          {(props.action === "login" ? "Sign in" : "Sign up") + " with Google"}
         </Button>
+
         <Typography sx={{ mt: 2 }} color={"red"}>
           {errorMessage}
         </Typography>
