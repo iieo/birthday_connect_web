@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export default function NavigationBar() {
   const navigate = useNavigate();
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "#ed4247" }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Birthday App

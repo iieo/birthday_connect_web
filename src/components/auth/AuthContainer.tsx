@@ -102,7 +102,7 @@ import { Email } from "@mui/icons-material";
           />
         )}
         <Button
-          sx={{ mt: 2, width: "100%" }}
+          sx={{ mt: 2, width: "100%", backgroundColor: "#ed4247" }}
           size="large"
           startIcon={<Email />}
           disabled={disabled}
@@ -112,7 +112,7 @@ import { Email } from "@mui/icons-material";
           {(props.action === "login" ? "Sign in" : "Sign up") + " with Email"}
         </Button>
         <Button
-          sx={{ mt: 2, width: "100%" }}
+          sx={{ mt: 2, width: "100%", backgroundColor: "#ed4247" }}
           startIcon={<GoogleIcon />}
           size="large"
           disabled={disabled}

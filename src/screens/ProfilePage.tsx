@@ -34,7 +34,13 @@ const ProfilePage = ({}: Props) => {
 
     return (
       <Center>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Avatar sx={{ width: 200, height: 200 }} />
           <Divider sx={{ my: 2 }} />
           <TextField
@@ -53,7 +59,7 @@ const ProfilePage = ({}: Props) => {
             />
           </LocalizationProvider>
           <Button
-            sx={{ mt: 2, width: "100%" }}
+            sx={{ mt: 2, width: "100%", backgroundColor: "#ed4247" }}
             size="large"
             variant="contained"
             onClick={handleSubmit}

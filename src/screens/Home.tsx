@@ -13,20 +13,31 @@ const Home = ({}: Props) => {
   const user = useContext(UserContext)
 
   const createListItem = (friend: User) => (
-    <React.Fragment>
-      <ListItem
-        key={friend.birthday.toISOString() + friend.name + Math.random()}
-        sx={{ backgroundColor: "#e0e0e0", width: "100%", borderRadius: 2, my: 1}}
-      >
-        <ListItemAvatar>
-          <Avatar></Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={user?.name}
-          secondary={dayjs(user?.birthday).format("DD.MM.YYYY")}
-        />
-      </ListItem>
-    </React.Fragment>
+    <ListItem
+      key={friend.birthday.toISOString() + friend.name + Math.random()}
+      sx={{
+        backgroundColor: "#ed4247",
+        width: "100%",
+        borderRadius: 2,
+        my: 1,
+      }}
+    >
+      <ListItemAvatar>
+        <Avatar></Avatar>
+      </ListItemAvatar>
+      <ListItemText
+        primary={
+          <Typography variant="h6" color="#f7f7f7">
+            {friend.name}
+          </Typography>
+        }
+        secondary={
+          <Typography variant="body2" color="#f7f7f7">
+            {friend.birthday.format("DD.MM.YYYY")}
+          </Typography>
+        }
+      />
+    </ListItem>
   );
 
   const getNextBirthday = () => {
@@ -38,18 +49,18 @@ const Home = ({}: Props) => {
     <div style={{ display: "flex", width: "100%", height: "93.2vh" }}>
       <Box
         sx={{
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#f7f7f7",
           display: "flex",
           alignItems: "center",
           width: "50%",
           padding: 2,
         }}
       >
-        <List sx={{width: "100%"}}>{user?.friends.map(createListItem)}</List>
+        <List sx={{ width: "100%" }}>{user?.friends.map(createListItem)}</List>
       </Box>
       <Box
         sx={{
-          backgroundColor: "orange",
+          backgroundColor: "#ed4247",
           flexDirection: "column",
           display: "flex",
           alignItems: "center",
@@ -58,19 +69,17 @@ const Home = ({}: Props) => {
           padding: 4,
         }}
       >
-        <Card sx={{ width: "100%", padding: 2 }}>
-          <Typography variant="h4" sx={{ flexGrow: 1 }}>
+        <div style={{ width: "100%", padding: 2, backgroundColor: "#ed4247" }}>
+          <Typography variant="h3" color="#f7f7f7" sx={{ flexGrow: 1 }}>
             Next birthday:
           </Typography>
-          <Typography variant="h5" sx={{ flexGrow: 1 }}>
-            {getNextBirthday()?.name ??
-              "No friends added yet"}
+          <Typography variant="h5" color="#f7f7f7" sx={{ flexGrow: 1 }}>
+            {getNextBirthday()?.name ?? "No friends added yet"}
           </Typography>
-          <Typography variant="h5" sx={{ flexGrow: 1 }}>
-            {getNextBirthday()?.birthday.format("DD.MM.YYYY") ??
-              ""}
+          <Typography variant="h5" color="#f7f7f7" sx={{ flexGrow: 1 }}>
+            {getNextBirthday()?.birthday.format("DD.MM.YYYY") ?? ""}
           </Typography>
-        </Card>
+        </div>
       </Box>
     </div>
   );
